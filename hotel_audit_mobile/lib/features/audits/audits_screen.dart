@@ -40,7 +40,7 @@ class AuditsScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 12),
             DropdownButtonFormField<AuditStatus?>(
-              value: selectedStatus,
+              initialValue: selectedStatus,
               decoration: const InputDecoration(labelText: 'Filter by status'),
               items: [
                 const DropdownMenuItem<AuditStatus?>(value: null, child: Text('All statuses')),
