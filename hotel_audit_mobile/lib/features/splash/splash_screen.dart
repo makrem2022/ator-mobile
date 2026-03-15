@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/widgets/placeholder_screen.dart';
-
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const PlaceholderScreen(
-      title: 'Splash',
-      subtitle: 'Initialize app services and restore session.',
+    return const Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 }
