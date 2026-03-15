@@ -10,9 +10,7 @@ final mockAuditsRepositoryProvider = Provider<MockAuditsRepository>((ref) {
 });
 
 class AuditsController extends StateNotifier<List<Audit>> {
-  AuditsController(this._repository) : super(_repository.fetchAudits());
-
-  final MockAuditsRepository _repository;
+  AuditsController(MockAuditsRepository repository) : super(repository.fetchAudits());
 
   void saveAnswer({
     required String auditId,
