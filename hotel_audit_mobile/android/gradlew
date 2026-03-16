@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+WRAPPER_JAR="$SCRIPT_DIR/gradle/wrapper/gradle-wrapper.jar"
+
+if [ -f "$WRAPPER_JAR" ]; then
+  exec java -classpath "$WRAPPER_JAR" org.gradle.wrapper.GradleWrapperMain "$@"
+fi
+
+if command -v gradle >/dev/null 2>&1; then
+  echo "gradle-wrapper.jar is missing; falling back to system 'gradle'." >&2
+  exec gradle "$@"
+fi
+
+echo "Error: gradle-wrapper.jar is missing and no system 'gradle' command is available." >&2
+echo "Run this project through Flutter tooling (flutter build ...) or provide a Gradle installation." >&2
+exit 1
